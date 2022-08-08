@@ -13,7 +13,6 @@ export default async (req, res, next) => {
       }
 
       setCookie('token', info.token, { req, res });
-      console.log(`Set Cookie`);
       res.redirect('http://localhost:3000/dashboard');
     })(req, res, next);
   } catch (err) {
