@@ -9,11 +9,11 @@ export default async (req, res, next) => {
     passport.authenticate('twitch', (err, user, info) => {
       if (err || !user) {
         console.error(err);
-        res.redirect('http://localhost:3000/?a=auth_fail');
+        res.redirect(`${process.env.BASE_URL}/?a=auth_fail`);
       }
 
       setCookie('token', info.token, { req, res });
-      res.redirect('http://localhost:3000/dashboard');
+      res.redirect(`${process.env.BASE_URL}/dashboard`);
     })(req, res, next);
   } catch (err) {
     console.log(`Callback Error: ${err}`);
